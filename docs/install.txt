@@ -1,0 +1,219 @@
+
+
+Install xerces-c
+
+	http://xml.apache.org/xerces-c/
+	download: http://www.apache.org/dist/xml/xerces-c/xerces-c-src_2_6_0.tar.gz
+
+	cp xerces-c-src2_6_0.tar.gz /usr/local
+
+	cd /usr/local
+
+	tar xzvf xerces-c-src2_6_0.tar.gz
+
+	mv xerces-c-src2_6_0 xerces-c	
+
+	setenv XERCESCROOT /usr/local/xerces-c
+	export XERCESCROOT=/usr/local/xerces-c
+
+	cd xerces-c/src/xercesc
+
+	./runConfigure -p linux -c gcc -x g++ (or)
+	./runConfigure -p linux -c icc -x icc (or)
+	./runConfigure -p irix -c gcc -x CC -b 64 -l "-64" -z "-64"
+
+	gmake
+
+	verificar (gmake install)
+
+	Verificar (ln -s libxerces-c.s0.26.0 lib...26)
+
+	ln -s /usr/local/xerces-c/lib/* /usr/lib (or)
+	ln -s /usr/local/xerces-c/lib/* /usr/lib64
+
+	ln -s /usr/local/xerces-c/include/xercesc /usr/include/
+
+
+Install FMOD
+
+	http://www.fmod.org/
+	download: http://www.fmod.org/files/fmodapi374linux.tar.gz
+
+	cp fmodapi374linux.tar.gz /usr/local
+	cd /usr/local
+	tar xzvf fmodapi374linux.tar.gz
+	ln -s /usr/local/fmodapi374linux/api/libfmod-3.74.so /usr/lib
+	ln -s /usr/local/fmodapi374linux/api/inc/* /usr/include
+
+	gentoo: 
+
+		emerge fmod
+
+Configuring rsh
+
+
+	if necessary (rpm -i rsh-server-0.17-10.i386.rpm)
+	chkconfig rsh on
+	fill the file /etc/hosts.equiv with the computer
+		Ex:	power
+			jaguarii.midianet.intranet
+			predicta1
+	/etc/init.d/xinetd restart
+
+	on SGI also
+
+	fill the file .rhosts with computer and user
+		Ex:	localhost root
+
+	Debian:
+
+		apt-get install rsh-redone-server
+		apt-get install rsh-client
+
+	Fedora:
+
+		apt-get install rsh-server
+
+Install MPICH
+
+	http://www-unix.mcs.anl.gov/mpi/mpich/
+	download: http://www-unix.mcs.anl.gov/mpi/mpich/downloads/mpich.tar.gz
+
+	if(icc) {
+		setenv CC icc
+		setenv CXX icc
+
+			or
+
+		export CC icc
+		export CXX icc
+	}
+
+	cp mpich.tar.gz /usr/local (or /usr/lib)
+	cd /usr/local
+	tar xzvf mpich.tar.gz
+	cd mpich-1.2.6
+	./configure --prefix=/usr/local/mpich-1.2.6 --with-common-prefix=/usr/local/mpich-1.2.6 -rsh=ssh
+	apresentou problemas (autoconf)
+	make
+	make install
+
+	insert in /etc/bashrc:
+	
+		PATH=${PATH}:/usr/local/mpich-1.2.6/bin/
+		export PATH=${PATH}:/usr/local/mpich-1.2.5.2/bin/
+
+	Do not use localhost to specify a computer in a MPI command line
+
+	gentoo: 
+
+		emerge mpich
+
+Install OSS (not necessary in last realese of Fedora and RedHat9.0)
+	chmod a+rw /dev/dsp*
+	insmod soundcore
+
+Install MPEG2
+	cp mpeg2dec-0.4.0.tar.gz /usr/local 
+        cd /usr/local
+        tar xzvf mpeg2dec-0.4.0.tar.gz
+	cd mpeg2dec-0.4.0
+	./configure
+	make
+	make install
+
+	cd /usr/local/include/mpeg2dec
+
+	insert the string at begining:
+		
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+	insert the string at end :
+
+#ifdef __cplusplus
+}
+#endif
+	
+	on mpeg2convert.h  mpeg2.h
+ 	
+
+Install Joystick Diver
+	chmod a+rw /dev/js*
+	insmod joydev
+	     or/and
+	insmod gameport
+	insmod analog
+	insmod emu10k1-gp
+
+	add the following lines in /etc/modules.conf  :
+	
+		alias char-major-13 input
+		above input joydev analog emu10k1-gp
+		options analog js=gameport"
+
+	
+
+sistema X
+
+	http://www.nvidia.com/
+	download: http://download.nvidia.com/XFree86/Linux-x86/1.0-5336/NVIDIA-Linux-x86-1.0-5336-pkg1.run
+
+	/etx/X11/xdm/Xsession   insert (xhost +)
+
+	insert in .bashrc
+		export DISPLAY=:0.0
+		xhost +
+		#export __GL_FSAA_MODE=7
+
+
+
+	chmod a+rw /dev/nvidia*
+	Option      "Stereo" "3"
+
+	Galaxy :
+		ModeLine     "1280x1024"   204.60   1280 1492 1652 1868   1024
+1025 1028 1032 +hsync +vsync
+
+	TwinView:
+	
+	Option "TwinView"
+    	Option "SecondMonitorHorizSync"   "15-140"
+    	Option "SecondMonitorVertRefresh" "15-140"
+    	Option "TwinViewOrientation"      "RightOf"
+    	Option "MetaModes"                "1280x1024,1280x1024"
+    	Option "ConnectedMonitor"         "crt,crt"
+
+
+SPACEBALL
+	chmod a+rw /dev/ttyS0 (ou)
+	chmod a+rw /dev/ttyS1
+
+InterTrax
+	unzip isense.zip
+	cp Linux/libisense.so /lib
+
+
+LibWWW
+
+	Fedora:
+
+		apt-get install w3c-libwww-devel
+
+	Debian:
+
+		apt-get install libwww-dev
+
+	Gentoo:
+
+		emerge libwww
+
+
+Glew
+
+	Fedora:
+	
+		apt-get install glew
+		apt-get install glew-devel
+		

@@ -1,0 +1,126 @@
+
+[executer]
+RunInTerminal=true
+
+[Project DBase]
+ShowLocals=true
+
+[filenumbers]
+0=98
+1=129
+2=44
+3=1
+4=41
+5=92
+0=1
+1=136
+2=150
+3=87
+4=12
+5=79
+6=82
+7=1
+8=1
+9=100
+10=46
+11=16
+12=1
+13=549
+14=83
+15=19
+16=94
+17=20
+18=145
+19=49
+20=128
+21=772
+22=401
+23=31
+
+[filemarkers]
+0=
+1=
+2=
+3=
+4=
+5=
+6=
+7=
+8=
+9=
+10=
+11=
+12=
+13=
+14=
+15=
+16=
+17=
+18=
+19=
+20=
+21=
+22=
+23=
+
+[File View]
+filter.file.unmatch=*.so *.o *.a *.la
+filter.file.ignore.hidden=0
+filter.dir.ignore.hidden=0
+
+[Project State]
+clean before build=false
+
+[replace_text]
+0=this->
+1=eye->
+2=Coqueiro1.rgb
+3=Coqueiro2.rgb
+4=Coqueiro3.rgb
+5=Paredes.jpg
+6=MorrodoCristo.jpg
+7=my_rrr->distEye
+
+[find_text]
+0=tex
+1=xxx
+2=Tex
+3=textfile++
+4=textfile
+5=glClearC
+6=1000
+7=BACK
+
+[File View]
+filter.file.unmatch=*.so *.o *.a *.la
+filter.file.ignore.hidden=0
+filter.dir.ignore.hidden=0
+
+[Project State]
+clean before build=false
+
+[filelist]
+0=/home/lsoares/jinx/src/viewer.h
+1=/home/lsoares/jinx/src/input.cpp
+2=/home/lsoares/jinx/src/engine.cpp
+3=/home/lsoares/jinx/src/main.cpp
+4=/home/lsoares/jinx/src/render/render.h
+5=/home/lsoares/jinx/src/EngineThreads.cpp
+6=/home/lsoares/jinx/src/render/render.cpp
+7=/home/lsoares/jinx/src/config/sax.h
+8=/home/lsoares/jinx/src/config/sax.cpp
+9=/home/lsoares/jinx/src/config/xmlsax.h
+10=/home/lsoares/jinx/src/config/xmlsax.cpp
+11=/home/lsoares/jinx/src/joystick.h
+12=/home/lsoares/jinx/src/joystick.cpp
+
+[Project Tree]
+0=0
+
+[File Tree]
+0=0
+1=0:7
+2=0:7:1
+3=0:7:3
+4=0:7:6
+5=0:7:7

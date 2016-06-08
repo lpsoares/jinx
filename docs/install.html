@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="content-type"
+ content="text/html; charset=ISO-8859-1">
+  <title>Jinx Instalation</title>
+</head>
+<body>
+<div style="text-align: center;"><br>
+<big><big><big>Jinx Instalation</big></big></big><br>
+</div>
+<br>
+Install xerces-c<br>
+<br>
+&nbsp;&nbsp;&nbsp; <a href="http://xml.apache.org/xerces-c/">http://xml.apache.org/xerces-c/</a><br>
+&nbsp;&nbsp;&nbsp; download: <a
+ href="http://www.apache.org/dist/xml/xerces-c/xerces-c-src_2_5_0.tar.gz">http://www.apache.org/dist/xml/xerces-c/xerces-c-src_2_5_0.tar.gz</a><br>
+<br>
+&nbsp;&nbsp;&nbsp; cp xerces-c-src2_5_0.tar.gz /usr/local<br>
+<br>
+&nbsp;&nbsp;&nbsp; cd /usr/local<br>
+<br>
+&nbsp;&nbsp;&nbsp; tar xzvf xerces-c-src2_5_0.tar.gz<br>
+<br>
+&nbsp;&nbsp;&nbsp; mv xerces-c-src2_5_0 xerces-c&nbsp;&nbsp;&nbsp; <br>
+<br>
+&nbsp;&nbsp;&nbsp; setenv XERCESCROOT /usr/local/xerces-c<br>
+&nbsp;&nbsp;&nbsp; export XERCESCROOT=/usr/local/xerces-c<br>
+<br>
+&nbsp;&nbsp;&nbsp; cd xerces-c/src/xercesc<br>
+<br>
+&nbsp;&nbsp;&nbsp; ./runConfigure -p linux -c gcc -x g++ (or)<br>
+&nbsp;&nbsp;&nbsp; ./runConfigure -p linux -c icc -x icc (or)<br>
+&nbsp;&nbsp;&nbsp; ./runConfigure -p irix -c gcc -x CC -b 64 -l "-64"
+-z "-64"<br>
+<br>
+&nbsp;&nbsp;&nbsp; gmake<br>
+<br>
+&nbsp;&nbsp;&nbsp; verificar (gmake install)<br>
+<br>
+&nbsp;&nbsp;&nbsp; verificar (ln -s libxerces-c.s0.25.0 lib...25)<br>
+<br>
+&nbsp;&nbsp;&nbsp; ln -s /usr/local/xerces-c/lib/* /usr/lib (or)<br>
+&nbsp;&nbsp;&nbsp; ln -s /usr/local/xerces-c/lib/* /usr/lib64<br>
+<br>
+&nbsp;&nbsp;&nbsp; ln -s /usr/local/xerces-c/include/xercesc
+/usr/include/<br>
+<br>
+<br>
+Install FMOD<br>
+<br>
+&nbsp;&nbsp;&nbsp; <a href="http://www.fmod.org/">http://www.fmod.org/</a><br>
+&nbsp;&nbsp;&nbsp; download: <a
+ href="http://www.fmod.org/files/fmodapi372linux.tar.gz">http://www.fmod.org/files/fmodapi372linux.tar.gz</a><br>
+<br>
+&nbsp;&nbsp;&nbsp; cp fmodapi363linux.tar.gz /usr/local<br>
+&nbsp;&nbsp;&nbsp; cd /usr/local<br>
+&nbsp;&nbsp;&nbsp; tar xzvf fmodapi363linux.tar.gz<br>
+&nbsp;&nbsp;&nbsp; ln -s /usr/local/fmodapi363linux/api/libfmod-3.63.so
+/usr/lib<br>
+&nbsp;&nbsp;&nbsp; ln -s /usr/local/fmodapi363linux/api/inc/*
+/usr/include<br>
+<br>
+Configuring rsh<br>
+<br>
+<br>
+&nbsp;&nbsp;&nbsp; if necessary (rpm -i rsh-server-0.17-10.i386.rpm)<br>
+&nbsp;&nbsp;&nbsp; chkconfig rsh on<br>
+&nbsp;&nbsp;&nbsp; fill the file /etc/hosts.equiv with the computer<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Ex:&nbsp;&nbsp;&nbsp; power<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+jaguarii.midianet.intranet<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; predicta1<br>
+&nbsp;&nbsp;&nbsp; /etc/init.d/xinetd restart<br>
+<br>
+&nbsp;&nbsp;&nbsp; on SGI also<br>
+<br>
+&nbsp;&nbsp;&nbsp; fill the file .rhosts with computer and user<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Ex:&nbsp;&nbsp;&nbsp; localhost
+root<br>
+<br>
+Install MPICH<br>
+<br>
+&nbsp;&nbsp;&nbsp; <a href="http://www-unix.mcs.anl.gov/mpi/mpich/">http://www-unix.mcs.anl.gov/mpi/mpich/</a><br>
+&nbsp;&nbsp;&nbsp; download: <a
+ href="http://www-unix.mcs.anl.gov/mpi/mpich/downloads/mpich.tar.gz">http://www-unix.mcs.anl.gov/mpi/mpich/downloads/mpich.tar.gz</a><br>
+<br>
+&nbsp;&nbsp;&nbsp; if(icc) {<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; setenv CC icc<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; setenv CXX icc<br>
+&nbsp;&nbsp;&nbsp; }<br>
+<br>
+&nbsp;&nbsp;&nbsp; cp mpich.tar.gz /usr/local (or /usr/lib)<br>
+&nbsp;&nbsp;&nbsp; cd /usr/local<br>
+&nbsp;&nbsp;&nbsp; tar xzvf mpich.tar.gz<br>
+&nbsp;&nbsp;&nbsp; cd mpich-1.2.5.2<br>
+&nbsp;&nbsp;&nbsp; ./configure<br>
+&nbsp;&nbsp;&nbsp; apresentou problemas (autoconf)<br>
+&nbsp;&nbsp;&nbsp; make<br>
+&nbsp;&nbsp;&nbsp; nao funcionou (make install)<br>
+&nbsp;&nbsp;&nbsp; mkdir /mpi<br>
+&nbsp;&nbsp;&nbsp; chmod 1777 /mpi<br>
+<br>
+&nbsp;&nbsp;&nbsp; insert in /etc/bashrc:<br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+PATH=${PATH}:/usr/local/mpich-1.2.5.2/bin/<br>
+<br>
+&nbsp;&nbsp;&nbsp; Do not use localhost to specify a computer in a MPI
+command line<br>
+<br>
+Install OSS (not necessary in last realese of Fedora and RedHat9.0)<br>
+&nbsp;&nbsp;&nbsp; chmod a+rw /dev/dsp*<br>
+&nbsp;&nbsp;&nbsp; insmod soundcore<br>
+<br>
+Install MPEG2<br>
+&nbsp;&nbsp;&nbsp; cp mpeg2dec-0.4.0.tar.gz /usr/local <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cd /usr/local<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tar xzvf
+mpeg2dec-0.4.0.tar.gz<br>
+&nbsp;&nbsp;&nbsp; cd mpeg2dec-0.4.0<br>
+&nbsp;&nbsp;&nbsp; ./configure<br>
+&nbsp;&nbsp;&nbsp; make<br>
+&nbsp;&nbsp;&nbsp; make install<br>
+<br>
+&nbsp;&nbsp;&nbsp; cd /usr/local/include/mpeg2dec<br>
+<br>
+&nbsp;&nbsp;&nbsp; insert the string at begining:<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <br>
+#ifdef __cplusplus<br>
+extern "C" {<br>
+#endif<br>
+<br>
+&nbsp;&nbsp;&nbsp; insert the string at end :<br>
+<br>
+#ifdef __cplusplus<br>
+}<br>
+#endif<br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; on mpeg2convert.h&nbsp; mpeg2.h<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+<br>
+Install Joystick Diver<br>
+&nbsp;&nbsp;&nbsp; chmod a+rw /dev/js*<br>
+&nbsp;&nbsp;&nbsp; insmod joydev<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; or/and<br>
+&nbsp;&nbsp;&nbsp; insmod gameport<br>
+&nbsp;&nbsp;&nbsp; insmod analog<br>
+&nbsp;&nbsp;&nbsp; insmod emu10k1-gp<br>
+<br>
+sistema X<br>
+<br>
+&nbsp;&nbsp;&nbsp; <a href="http://www.nvidia.com/">http://www.nvidia.com/</a><br>
+&nbsp;&nbsp;&nbsp; download: <a
+ href="http://download.nvidia.com/XFree86/Linux-x86/1.0-5336/NVIDIA-Linux-x86-1.0-5336-pkg1.run">http://download.nvidia.com/XFree86/Linux-x86/1.0-5336/NVIDIA-Linux-x86-1.0-5336-pkg1.run</a><br>
+<br>
+&nbsp;&nbsp;&nbsp; /etx/X11/xdm/Xsession&nbsp;&nbsp; insert (xhost +)<br>
+<br>
+&nbsp;&nbsp;&nbsp; insert in .bashrc<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; export DISPLAY=:0.0<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; xhost +<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; #export __GL_FSAA_MODE=7<br>
+<br>
+<br>
+<br>
+&nbsp;&nbsp;&nbsp; chmod a+rw /dev/nvidia*<br>
+&nbsp;&nbsp;&nbsp; Option&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Stereo" "3"<br>
+<br>
+&nbsp;&nbsp;&nbsp; Galaxy :<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; ModeLine&nbsp;&nbsp;&nbsp;&nbsp;
+"1280x1024"&nbsp;&nbsp; 204.60&nbsp;&nbsp; 1280 1492 1652
+1868&nbsp;&nbsp; 1024<br>
+1025 1028 1032 +hsync +vsync<br>
+<br>
+&nbsp;&nbsp;&nbsp; TwinView:<br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; Option "TwinView"<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Option
+"SecondMonitorHorizSync"&nbsp;&nbsp; "15-140"<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Option "SecondMonitorVertRefresh"
+"15-140"<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Option
+"TwinViewOrientation"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "RightOf"<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Option
+"MetaModes"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"1280x1024,1280x1024"<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Option
+"ConnectedMonitor"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"crt,crt"<br>
+<br>
+<br>
+SPACEBALL<br>
+&nbsp;&nbsp;&nbsp; chmod a+rw /dev/ttyS0 (ou)<br>
+&nbsp;&nbsp;&nbsp; chmod a+rw /dev/ttyS1<br>
+<br>
+InterTrax<br>
+&nbsp;&nbsp;&nbsp; unzip isense.zip<br>
+&nbsp;&nbsp;&nbsp; cp Linux/libisense.so /lib<br>
+<br>
+<br>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<jinx>
+	<computer name="power">
+		<window id="front">
+			<!--wand mode="tracker"/-->
+			<wand mode="spaceball"/>
+			<!--wand mode="intertrax"/-->
+			<view mode="mono"/>
+			<size width="280" height="102" fullscreen="TRUE"/>
+			<projection mode="planar"/>
+			<!--view mode="right"/-->
+			<!--view mode="left"/-->
+			<!--view mode="stereo"/-->
+			<position x="0" y="0"/>
+			<screen dir="0 0 -1" up="0 1 0"/>
+			<frustum left="-1.6" right="1.6" bottom="-1.0" top="1.0"/>
+		</window>
+		<!--window id="front2">
+			<wand mode="spaceball"/>
+			<view mode="mono"/>
+			<projection mode="spherical"/>
+			<fullscreen/>
+			<size width="400" height="400"/>
+			<position x="500" y="300"/>
+			<screen dir="1 0 0" up="0 1 0"/>
+			<frustum left="-0.6" right="0.6" bottom="-1.0" top="1.0"/>
+		</window-->
+	</computer>
+</jinx>

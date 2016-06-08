@@ -1,0 +1,1 @@
+CC -o simple_server simple_server_main.cpp ServerSocket.cpp Socket.cpp sgiFlock.C timing.C

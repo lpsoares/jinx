@@ -1,0 +1,16 @@
+mpirun -arch i686 \
+-map \
+\
+localhost:\
+localhost:\
+localhost:\
+localhost:\
+localhost:\
+localhost:\
+localhost\
+ \
+build/i686/main \
+-configurationhttp://localhost.midianet.intranet/x3d/render.xml \
+-X3Dhttp://localhost.midianet.intranet/exemplo.x3d
+
+killall -9  main

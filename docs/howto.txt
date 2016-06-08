@@ -1,0 +1,15 @@
+
+Jinx 
+
+
+Jinx reads an X3D based in a URL, it is specified in the function X3D() from Engine class. It is called now from main.cpp
+also there is a configuration file used to define some parameters of each computer. There is only one file for all nodes.
+
+The X3D file is read in each computer, that needs it. Also it reads the textures and sound necessary. 
+Jinx uses a cache diretory to hold the textures and sound. It is the .cache directory.
+
+The MPI is used to dispatch the applications in the cluster, in the case the mpirun is used. There is a script that do it automaticaly.
+This script is called "main"
+It is very important that all node of the cluster have the same user loged in.
+
+
